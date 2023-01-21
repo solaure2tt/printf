@@ -3,6 +3,29 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+
+/**
+ * print_int - print an integer
+ * @n: the int to be printed
+ * @len: the length of the printed int
+ * return: nothing
+ */
+void print_int(int n, int *len)
+{
+	if (n < 0)
+	{
+		_putchar('-');
+		*len = *len + 1;
+		n = -1 * n;
+	}
+	if (n / 10 != 0)
+	{
+		print_int(n / 10, len);
+	}
+	_putchar('0' + (n % 10));
+	*len = *len + 1;
+}
+
 /**
  * printchar - print a character
  * Description: print a character on the screen
@@ -60,6 +83,9 @@ int _printf(const char *format, ...)
 					break;
 				case 's':
 					printstring(va_arg(args, char *), count);
+					break;
+				case 'd':
+					print_int(va_arg(args, int), count);
 					break;
 				default:
 					printchar(format[i], count);
