@@ -98,5 +98,5 @@ int _printf(const char *format, ...)
 			printchar(format[i], count);
 		i++;
 	}
-	return (*count - 1);
+	return (*count);
 }
