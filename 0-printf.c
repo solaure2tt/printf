@@ -87,6 +87,9 @@ int _printf(const char *format, ...)
 				case 'd':
 					print_int(va_arg(args, int), count);
 					break;
+				case 'i':
+					print_int(va_arg(args, int), count);
+					break;
 				default:
 					printchar(format[i], count);
 			}
@@ -95,5 +98,5 @@ int _printf(const char *format, ...)
 			printchar(format[i], count);
 		i++;
 	}
-	return (*count);
+	return (*count - 1);
 }
