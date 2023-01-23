@@ -8,22 +8,38 @@
  * print_int - print an integer
  * @n: the int to be printed
  * @len: the length of the printed int
+ * @conv: the conversion specifier
  * return: nothing
  */
-void print_int(int n, int *len)
+void print_int(int n, int *len, char conv)
 {
-	if (n < 0)
+
+	if (conv == 'd')
 	{
-		_putchar('-');
+		if (n < 0)
+		{
+			_putchar('-');
+			*len = *len + 1;
+			n = -1 * n;
+		}
+		if (n / 10 != 0)
+		{
+			print_int(n / 10, len, 'd');
+		}
+		_putchar('0' + (n % 10));
 		*len = *len + 1;
-		n = -1 * n;
 	}
-	if (n / 10 != 0)
+	else
 	{
-		print_int(n / 10, len);
+		if (n <= 1)
+			_putchar(n + '0');
+		else
+		{
+			print_int(n / 2, len, 'b');
+			_putchar((n % 2) + '0');
+			*len = *len + 1;
+		}
 	}
-	_putchar('0' + (n % 10));
-	*len = *len + 1;
 }
 
 /**
@@ -85,10 +101,13 @@ int _printf(const char *format, ...)
 					printstring(va_arg(args, char *), count);
 					break;
 				case 'd':
-					print_int(va_arg(args, int), count);
+					print_int(va_arg(args, int), count, 'd');
 					break;
 				case 'i':
-					print_int(va_arg(args, int), count);
+					print_int(va_arg(args, int), count, 'd');
+					break;
+				case 'b':
+					print_int(va_arg(args, int), count, 'b');
 					break;
 				default:
 					printchar(format[i], count);
