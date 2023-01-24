@@ -2,7 +2,51 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdio.h>
 
+/**
+ * print_converted_int - print a converted int
+ * @n: the int to be printed
+ * @len: the lengt of the printed int
+ * @base: d
+ * @upper: s
+ * return nothing
+ */
+void print_converted_int(unsigned int n, int base, int upper,  int *len)
+{
+	int i;
+	hex hdata[] = {
+		{10, 'a', 'A'},
+		{11, 'b', 'B'},
+		{12, 'c', 'C'},
+		{13, 'd', 'D'},
+		{14, 'e', 'E'},
+		{15, 'f', 'F'}
+	};
+	if (n / base > (unsigned int)0 )
+	{
+		print_converted_int(n / base, base, upper, len);
+	}
+	if ((n % base) >= 10)
+	{
+		for (i = 0 ; i < 6 ; i++)
+		{
+			if ((n % base) == hdata[i].n)
+				if (upper == 1)
+					_putchar(hdata[i].l_upper);
+				else
+					_putchar(hdata[i].l_lower);
+			else
+			{
+			}
+
+		}
+
+	}
+	else
+		_putchar('0' + (n % base));
+	*len = *len + 1;
+}
 
 /**
  * print_int - print an integer
@@ -108,6 +152,24 @@ int _printf(const char *format, ...)
 					break;
 				case 'b':
 					print_int(va_arg(args, int), count, 'b');
+					break;
+				case 'x':
+					print_converted_int(
+						va_arg(args, unsigned int),16, 0, count);
+					break;
+				case 'X':
+					print_converted_int(
+						va_arg(args, unsigned int), 
+						16, 1, count);
+					break;
+				case 'u':
+					print_converted_int(
+						va_arg(args, unsigned int),
+						10, 0, count);
+					break;
+				case 'o':
+					print_converted_int(
+						va_arg(args, unsigned int), 8, 0, count);
 					break;
 				default:
 					printchar(format[i], count);

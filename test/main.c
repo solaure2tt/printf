@@ -23,6 +23,11 @@ int main(void)
 	_printf("this is zero: %d\n", 0);
 	_printf("Length:[%d, %i]\n", len, len);
 	printf("Length:[%d, %i]\n", len, len);
+	_printf("the octal value %d is %o\n", 123, 123);
+	_printf("the unsigned int value of %d is %u\n", 123, 123);
+	_printf("the hexadecimal int value of %d is %x\n", 17, 17);
+	_printf("the hexadecimal int value of %d is %x\n", 123, 123); 
+	_printf("the hexadecimal int value of %d is %X\n", 123, 123);
 
 	return(0);
 }
