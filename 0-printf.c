@@ -5,16 +5,17 @@
 #include <stdio.h>
 
 /**
- * print_converted_int - print a converted int
+ * print_convert_int - print a converted int
  * @n: the int to be printed
  * @len: the lengt of the printed int
  * @base: d
  * @upper: s
  * return nothing
  */
-void print_converted_int(unsigned int n, int base, int upper,  int *len)
+void print_convert_int(unsigned int n, int base, int upper,  int *len)
 {
 	int i;
+
 	hex hdata[] = {
 		{10, 'a', 'A'},
 		{11, 'b', 'B'},
@@ -23,25 +24,20 @@ void print_converted_int(unsigned int n, int base, int upper,  int *len)
 		{14, 'e', 'E'},
 		{15, 'f', 'F'}
 	};
-	if (n / base > (unsigned int)0 )
-	{
-		print_converted_int(n / base, base, upper, len);
-	}
+	if (n / base > 0)
+		print_convert_int(n / base, base, upper, len);
 	if ((n % base) >= 10)
 	{
 		for (i = 0 ; i < 6 ; i++)
 		{
 			if ((n % base) == hdata[i].n)
+			{
 				if (upper == 1)
 					_putchar(hdata[i].l_upper);
 				else
 					_putchar(hdata[i].l_lower);
-			else
-			{
 			}
-
 		}
-
 	}
 	else
 		_putchar('0' + (n % base));
@@ -72,17 +68,6 @@ void print_int(int n, int *len, char conv)
 		}
 		_putchar('0' + (n % 10));
 		*len = *len + 1;
-	}
-	else
-	{
-		if (n <= 1)
-			_putchar(n + '0');
-		else
-		{
-			print_int(n / 2, len, 'b');
-			_putchar((n % 2) + '0');
-			*len = *len + 1;
-		}
 	}
 }
 
@@ -150,29 +135,11 @@ int _printf(const char *format, ...)
 				case 'i':
 					print_int(va_arg(args, int), count, 'd');
 					break;
-				case 'b':
-					print_int(va_arg(args, int), count, 'b');
-					break;
-				case 'x':
-					print_converted_int(
-						va_arg(args, unsigned int),16, 0, count);
-					break;
-				case 'X':
-					print_converted_int(
-						va_arg(args, unsigned int), 
-						16, 1, count);
-					break;
-				case 'u':
-					print_converted_int(
-						va_arg(args, unsigned int),
-						10, 0, count);
-					break;
-				case 'o':
-					print_converted_int(
-						va_arg(args, unsigned int), 8, 0, count);
+				case '%':
+					printchar(format[i], count);
 					break;
 				default:
-					printchar(format[i], count);
+					other_funct(va_arg(args, unsigned int), format[i], count);
 			}
 		}
 		else

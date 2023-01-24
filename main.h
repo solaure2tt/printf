@@ -15,5 +15,7 @@ typedef struct _hex
 } hex;
 int _printf(const char *format, ...);
 int _putchar(char c);
+void print_convert_int(unsigned int n, int base, int upper,  int *len);
+void other_funct(unsigned int n, char conv, int *len);
 
 #endif
