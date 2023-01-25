@@ -17,5 +17,9 @@ int _printf(const char *format, ...);
 int _putchar(char c);
 void print_convert_int(unsigned int n, int base, int upper,  int *len);
 void other_funct(unsigned int n, char conv, int *len);
+void print_convertb_int(unsigned int n, int *len);
+void print_int(int n, int *len, char conv);
+void printchar(char c, int *i);
+void printstring(char *str, int *j);
 
 #endif
