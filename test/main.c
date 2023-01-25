@@ -28,6 +28,14 @@ int main(void)
 	_printf("the hexadecimal int value of %d is %x\n", 17, 17);
 	_printf("the hexadecimal int value of %d is %x\n", 123, 123); 
 	_printf("the hexadecimal int value of %d is %X\n", 123, 123);
+	len = _printf("%b\n", 0);
+	printf("len = %d\n", len);
+	_printf("%b\n", 1);
+	len = _printf("%b\n", 7);
+	printf("len = %d\n", len);
+	_printf("%b\n", 98);
+	len = _printf("%b\n", 200);
+	printf("len = %d\n", len);
 
 	return(0);
 }
