@@ -93,7 +93,7 @@ void printchar(char c, int *i)
  */
 void printstring(char *str, int *j)
 {
-	if (str != NULL)
+	if (str == NULL)
 		str = "(null)";
 	while (*str != '\0')
 	{
