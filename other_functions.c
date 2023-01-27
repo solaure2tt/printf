@@ -34,7 +34,7 @@ void other_funct(unsigned int n, char conv, int *len)
 	switch (conv)
 	{
 		case 'b':
-			print_convertb_int(n, len);
+			print_convert_int(n, 2, 0, len);
 			break;
 		case 'x':
 			print_convert_int(n, 16, 0, len);

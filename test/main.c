@@ -11,7 +11,7 @@ int main(void)
 {
 	int len;
 
-	int qw = _printf("%K");
+	int qw = _printf("%");
 	printf("%d\n", qw);
 	len = _printf("Let us try to printf a simple sentence.\n");
 	printf("len = %d\n", len);
