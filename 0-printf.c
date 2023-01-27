@@ -94,7 +94,7 @@ void printchar(char c, int *i)
 void printstring(char *str, int *j)
 {
 	if (str != NULL)
-		str = "(null)"
+		str = "(null)";
 	while (*str != '\0')
 	{
 		_putchar(*str);
