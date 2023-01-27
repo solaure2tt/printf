@@ -48,6 +48,11 @@ void other_funct(unsigned int n, char conv, int *len)
 		case 'o':
 			print_convert_int(n, 8, 0, len);
 			break;
+		default:
+			printchar('%', len);
+			printchar(conv, len);
+			break;
+
 	}
 }
 
