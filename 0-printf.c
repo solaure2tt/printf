@@ -94,13 +94,12 @@ void printchar(char c, int *i)
 void printstring(char *str, int *j)
 {
 	if (str != NULL)
+		str = "(null)"
+	while (*str != '\0')
 	{
-		while (*str != '\0')
-		{
-			_putchar(*str);
-			str++;
-			*j = *j + 1;
-		}
+		_putchar(*str);
+		str++;
+		*j = *j + 1;
 	}
 }
 /**
