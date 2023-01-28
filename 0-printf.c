@@ -115,6 +115,8 @@ int _printf(const char *format, ...)
 	va_list args;
 	int i = 0;
 	int *count = malloc(sizeof(int));
+	if (count == NULL)
+		return (-1);
 
 	*count = 0;
 	if (format == NULL)
