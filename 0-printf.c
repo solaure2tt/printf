@@ -53,6 +53,8 @@ void print_convert_int(unsigned int n, int base, int upper,  int *len)
  */
 void print_int(int n, int *len, char conv)
 {
+	int i = 1;
+
 
 	if (conv == 'd')
 	{
@@ -60,13 +62,13 @@ void print_int(int n, int *len, char conv)
 		{
 			_putchar('-');
 			*len = *len + 1;
-			n = -1 * n;
+			i = -1 * 1;
 		}
-		if (n / 10 != 0)
+		if (n / 10 * i != 0)
 		{
-			print_int(n / 10, len, 'd');
+			print_int(n / 10 * i, len, 'd');
 		}
-		_putchar('0' + (n % 10));
+		_putchar('0' + (n % 10) * i);
 		*len = *len + 1;
 	}
 }
